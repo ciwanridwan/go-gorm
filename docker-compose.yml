@@ -2,11 +2,12 @@ version: '1'
 
 services:
   app:
+    container_name: go-gorm
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - 8080:3000
+      - 8000:8000
     volumes:
     - ./:/go-gorm 
   postgres:
