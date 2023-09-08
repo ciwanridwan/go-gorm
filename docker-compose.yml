@@ -1,4 +1,4 @@
-version: '1'
+version: '3'
 
 services:
   app:
@@ -6,13 +6,17 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    restart: always
     ports:
       - 8000:8000
+    depends_on:
+      - "postgres"
     volumes:
     - ./:/go-gorm 
   postgres:
     image: postgres
     container_name: postgres
+    restart: always
     ports:
       - 5432:5432
     env_file:
